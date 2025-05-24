@@ -12,7 +12,7 @@ sales: Tracks SPID, GeoID, PID, SaleDate, Amount, Customers, and Boxes.
 Objective: Optimize sales performance, inventory management, and team efficiency based on historical sales data from 2021 to 2022.
 
 # Analytical Questions and Insights
-1/ Sales Performance by Region:
+# 1/ Sales Performance by Region:
 Queried SELECT g.Region, g.Geo, SUM(s.Amount) AS total_revenue, COUNT(s.SaleDate) AS total_transactions FROM sales s JOIN geo g ON s.GeoID = g.GeoID GROUP BY g.Region, g.Geo ORDER BY total_revenue DESC to identify top-revenue regions.
 Analyzed monthly trends with SELECT g.Region, g.Geo, DATE_FORMAT(s.SaleDate, '%Y-%m') AS sale_month, SUM(s.Amount) AS monthly_revenue ... GROUP BY g.Region, g.Geo, sale_month ORDER BY sale_month, monthly_revenue DESC, revealing seasonal patterns (e.g., January 2021 peaks).
 Insight: Americas (USA, Canada) led revenue, with potential for resource allocation to high performers and targeted marketing in underperforming regions.

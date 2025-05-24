@@ -58,4 +58,4 @@ Query Optimization: Used aggregations and filters (e.g., GROUP BY, LIMIT) to foc
 Insight Generation: Translated raw sales data into business recommendations, enhancing decision-making.
 Problem-Solving: Addressed data inconsistencies (e.g., team assignment gaps) with practical suggestions.
 # Conclusion
-This analysis transformed the awesome_chocolates dataset into a strategic tool, providing insights into sales performance, product profitability, and team efficiency. The process underscores my proficiency in SQL, data interpretation, and business application, making it a valuable asset for my GitHub portfolio and professional website. Future work could include predictive modeling to forecast demand and optimize pricing strategies.
+This analysis transformed the awesome_chocolates dataset into a strategic tool, providing insights into sales performance, product profitability, and team efficiency. The process underscores my proficiency in SQL, data interpretation, and business application. Future work could include predictive modeling to forecast demand and optimize pricing strategies.

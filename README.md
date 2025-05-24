@@ -19,7 +19,7 @@ Insight: Americas (USA, Canada) led revenue, with potential for resource allocat
  2/ Product Popularity and Profitability:
 Calculated top-selling products by boxes with SELECT g.Region, p.Product, SUM(s.Boxes) AS total_boxes_sold FROM sales s JOIN products p ON s.PID = p.PID JOIN geo g ON s.GeoID = g.GeoID GROUP BY g.Region, p.Product ORDER BY total_boxes_sold DESC.
 Insight: Products like Orange Choco and Organic Choco Syrup dominated sales, suggesting inventory focus on high-demand items.
-# 3/ Salesperson and Team Performance:
+ 3/ Salesperson and Team Performance:
 Assessed top performers with SELECT p.Salesperson, p.Team, p.Location, SUM(s.Amount) AS total_revenue, SUM(s.Customers) AS total_customers, SUM(s.Boxes) AS total_boxes FROM sales s JOIN people p ON s.SPID = p.SPID GROUP BY p.Salesperson, p.Team, p.Location ORDER BY total_revenue DESC LIMIT 5.
 Identified top teams (SELECT * FROM people WHERE Team IN ('delish', 'yummies')) based on revenue.
 Insight: Teams Delish and Yummies excelled, warranting rewards, while underperformers need support.

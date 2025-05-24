@@ -16,26 +16,26 @@ Objective: Optimize sales performance, inventory management, and team efficiency
 Queried SELECT g.Region, g.Geo, SUM(s.Amount) AS total_revenue, COUNT(s.SaleDate) AS total_transactions FROM sales s JOIN geo g ON s.GeoID = g.GeoID GROUP BY g.Region, g.Geo ORDER BY total_revenue DESC to identify top-revenue regions.
 Analyzed monthly trends with SELECT g.Region, g.Geo, DATE_FORMAT(s.SaleDate, '%Y-%m') AS sale_month, SUM(s.Amount) AS monthly_revenue ... GROUP BY g.Region, g.Geo, sale_month ORDER BY sale_month, monthly_revenue DESC, revealing seasonal patterns (e.g., January 2021 peaks).
 Insight: Americas (USA, Canada) led revenue, with potential for resource allocation to high performers and targeted marketing in underperforming regions.
-2/ Product Popularity and Profitability:
+# 2/ Product Popularity and Profitability:
 Calculated top-selling products by boxes with SELECT g.Region, p.Product, SUM(s.Boxes) AS total_boxes_sold FROM sales s JOIN products p ON s.PID = p.PID JOIN geo g ON s.GeoID = g.GeoID GROUP BY g.Region, p.Product ORDER BY total_boxes_sold DESC.
 Insight: Products like Orange Choco and Organic Choco Syrup dominated sales, suggesting inventory focus on high-demand items.
-3/ Salesperson and Team Performance:
+# 3/ Salesperson and Team Performance:
 Assessed top performers with SELECT p.Salesperson, p.Team, p.Location, SUM(s.Amount) AS total_revenue, SUM(s.Customers) AS total_customers, SUM(s.Boxes) AS total_boxes FROM sales s JOIN people p ON s.SPID = p.SPID GROUP BY p.Salesperson, p.Team, p.Location ORDER BY total_revenue DESC LIMIT 5.
 Identified top teams (SELECT * FROM people WHERE Team IN ('delish', 'yummies')) based on revenue.
 Insight: Teams Delish and Yummies excelled, warranting rewards, while underperformers need support.
-4/ Cost vs. Revenue Analysis:
+# 4/ Cost vs. Revenue Analysis:
 Evaluated profitability with SELECT p.Product, p.Cost_per_box, SUM(s.Amount) AS total_revenue, SUM(s.Boxes) AS total_boxes, (SUM(s.Amount) / (SUM(s.Boxes) * p.Cost_per_box)) AS revenue_to_cost_ratio FROM sales s JOIN products p ON s.PID = p.PID GROUP BY p.Product, p.Cost_per_box ORDER BY revenue_to_cost_ratio DESC.
 Insight: Low-cost items (e.g., White Choc at $0.16/box) showed high revenue-to-cost ratios, while high-cost, low-margin products need review.
-5/ Total Revenue Across Regions:
+# 5/ Total Revenue Across Regions:
 Computed overall revenue with SELECT SUM(s.Boxes * p.Cost_per_box) AS total_revenue FROM sales s JOIN products p ON s.PID = p.PID.
 Insight: Provided a baseline for current sales performance (exact figure pending final query execution).
-6/ Top 5 Products by Region:
+# 6/ Top 5 Products by Region:
 Identified regional best-sellers with SELECT g.Region, p.Product, SUM(s.Boxes) AS total_boxes FROM sales s JOIN products p ON s.PID = p.PID JOIN geo g ON s.GeoID = g.GeoID GROUP BY g.Region, p.Product ORDER BY g.Region, total_boxes DESC LIMIT 5.
 Insight: USA led with products like Organic Choco Syrup and Orange Choco, guiding regional marketing.
-7/ High-Value Transactions:
+# 7/ High-Value Transactions:
 Filtered transactions over $10,000 in 2022 with SELECT SaleDate, Amount FROM sales WHERE Amount > 10000 AND SaleDate >= '2022-01-01' ORDER BY Amount DESC.
 Insight: Highlighted significant sales for strategic follow-up.
-8/ Weekly Performance:
+# 8/ Weekly Performance:
 Analyzed Thursday sales (weekday 4) with SELECT PID, GeoID, SaleDate, Amount, Boxes, WEEKDAY(SaleDate) AS 'day of week' FROM sales WHERE WEEKDAY(SaleDate) = 4.
 Insight: Identified mid-week demand for inventory planning.
 
